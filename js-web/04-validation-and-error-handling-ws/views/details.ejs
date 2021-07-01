@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./partials/head.ejs") %>
+
+<body>
+<div class="container">
+    <%- include("./partials/header.ejs") %>
+    <%- include("./partials/notifications.ejs") %>
+    <main>
+        <h1><%= cube.name %></h1>
+        <img class="cube" src="<%= cube.imageUrl %>">
+        <div class="details">
+            <p><span>Description:</span> <%= cube.description %>.</p>
+            <p><span>Difficulty level:</span> <%= cube.difficulty %></p>
+            <% if (isLoggedIn && isCreator) { %>
+                <a class="btn" href="/">Back</a>
+                <a class="btn" href="/edit/<%= cube._id %>">Edit</a>
+                <a class="btn" id="delete" href="/delete/<%= cube._id %>">Delete</a>
+                <a class="btn" href="/attach/accessory/<%= cube._id %>">Attach</a>
+            <% } else { %>
+                <a class="btn" href="/">Back</a>
+            <% } %>
+        </div>
+
+        <h2>Accessories</h2>
+        <div class="accessories">
+            <% if (cube.accessories.length > 0) { %>
+                <% cube.accessories.forEach(accessory => { %>
+                    <div class="accessory">
+                        <img src="<%= accessory.imageUrl %>" alt="stickerName">
+                        <h3><%= accessory.name %></h3>
+                        <p><%= accessory.description %></p>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <h3 class="italic">This cube has no accessories yet...</h3>
+            <% } %>
+        </div>
+    </main>
+</div>
+
+<%- include("./partials/footer.ejs") %>
+
+</body>
+</html>

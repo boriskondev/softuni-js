@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Express Retake Exam January 2019</title>
+    <link href="../static/css/style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+
+<%- include("partials/header"); -%>
+
+    <% if (errorMessages.length > 0) { %>
+        <%- include("./partials/notifications"); %>
+    <% } %>
+
+        <main>
+            <div class="container">
+
+                <section class="details">
+                    <h1><%= title %></h1>
+                    <div>
+                        <img src="<%= imageUrl %>" />
+                    </div>
+                </section>
+
+                <section class="details">
+                    <h3>Theater Description</h3>
+                    <p><%= description %></p>
+                    <div class="buttons">
+                        <% if (isCreator) { %>
+                            <a class="btn delete" href="/delete/<%= _id %>">Delete</a>
+                            <a class="btn edit" href="/edit/<%= _id %>">Edit</a>
+                        <% } else { %>
+                            <% if (isLiked) { %>
+                                <span class="liked">You have already liked this play!</span>
+                            <% } else { %>
+                                <a class="btn like" href="/like/<%= _id %>">Like</a>
+                            <% } %>
+                        <% } %>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+    <%- include("partials/footer"); -%>
+
+</body>
+
+</html>

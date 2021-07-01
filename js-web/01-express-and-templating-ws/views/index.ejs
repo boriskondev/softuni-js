@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./partials/head.ejs") %>
+
+<body>
+<div class="container">
+
+    <%- include("./partials/header.ejs") %>
+
+    <main>
+        <h1>Browser</h1>
+        <form action="" method="">
+            <input type="text" class="search" name="search" placeholder="Search...">
+            <input type="number" name="from" class="difficulty" placeholder="Difficulty from...">
+            <span>-</span>
+            <input type="number" name="to" class="difficulty" placeholder="Difficulty to...">
+            <input type="submit" value="search">
+        </form>
+
+        <% if (cubes.length > 0) { %>
+
+            <% cubes.forEach(cube => { %>
+                <div class="cube">
+                    <img class="cube" src="<%= cube.imageURL %>">
+                    <p class="name"><%= cube.name %></p>
+                    <p><span>Difficulty level:</span> <%= cube.difficulty %></p>
+                    <a class="btn" href="/details/<%= cube.id %>">Details</a>
+                </div>
+            <% }) %>
+
+        <% } else { %>
+            <h2>NO CUBES WERE FOUND</h2>
+        <%}%>
+
+        <%- include("./partials/footer.ejs") %>
+
+    </main>
+</div>
+</body>
+
+</html>

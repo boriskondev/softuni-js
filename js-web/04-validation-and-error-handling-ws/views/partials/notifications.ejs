@@ -1,0 +1,7 @@
+<% if (errors.length > 0) { %>
+    <div id="notifications">
+        <% errors.forEach(error => { %>
+            <p id="notification-message"><%= error %></p>
+        <% }) %>
+    </div>
+<% } %>

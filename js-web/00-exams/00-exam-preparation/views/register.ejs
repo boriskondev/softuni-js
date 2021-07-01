@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Express Exam</title>
+    <link href="../static/css/style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+
+        <%- include("./partials/header"); %>
+
+        <% if (errorMessages.length > 0) { %>
+            <%- include("./partials/notifications"); %>
+        <% } %>
+
+        <main>
+            <form  action="/register" method="POST">
+                <h2>Register</h2>
+                <div class="on-dark">
+                    <label for="username">Username:</label>
+                    <input  type="text" placeholder="Steven" value="<%= username %>" name="username">
+                </div>
+
+                <div class="on-dark">
+                    <label for="password">Password:</label>
+                    <input  type="password"  placeholder="********" value="<%= password %>" name="password">
+                </div>
+            
+                <div class="on-dark">
+                    <label for="repeatPassword">Repeat Password:</label>
+                    <input  type="password" placeholder="********" value="<%= repeatPassword %>" name="repeatPassword">
+                </div>
+            
+                <button class="btn" type="submit" >Register</button>
+            </form>
+        </main>
+
+        <%- include("./partials/footer"); %>
+
+    </div>
+</body>
+
+</html>
